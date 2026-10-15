@@ -1,0 +1,707 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Book a demo | Shaffra</title>
+<meta name="description" content="Book a Shaffra demo. AI that works, rules that govern, people that decide.">
+<meta name="theme-color" content="#5b21b6">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1b1236;
+    --muted: #625c7c;
+    --line: #e4def4;
+    --field-line: #d6cfec;
+    --soft: #f7f4ff;
+    --purple-900: #3b0f8c;
+    --purple-700: #5b21b6;
+    --purple-600: #6d28d9;
+    --purple-500: #7c3aed;
+    --purple-400: #8b5cf6;
+    --purple-200: #ddd0ff;
+    --danger: #e11d48;
+    --ok: #16a34a;
+    --font: "Inter", "IBM Plex Sans Arabic", system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  :root[lang="ar"] { --font: "IBM Plex Sans Arabic", "Inter", system-ui, "Segoe UI", sans-serif; }
+
+  * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  html, body { margin: 0; }
+  body {
+    min-height: 100vh;
+    font-family: var(--font);
+    color: var(--ink);
+    background: linear-gradient(180deg, #ffffff 0%, #f7f4ff 60%, #efe9ff 100%);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ===== Purple header band ===== */
+  .hero {
+    background:
+      radial-gradient(520px 260px at 88% 0%, rgba(255, 255, 255, 0.22), transparent 70%),
+      radial-gradient(420px 240px at 6% 100%, rgba(167, 139, 250, 0.45), transparent 70%),
+      linear-gradient(135deg, var(--purple-900) 0%, var(--purple-600) 52%, var(--purple-400) 100%);
+    padding: 28px 16px 120px;
+  }
+  .topbar {
+    max-width: 560px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .logo { display: flex; align-items: center; min-height: 40px; }
+  .logo img { height: 36px; width: auto; display: block; }
+  /* If your logo is dark, add class "white" to the logo image to turn it white. */
+  .logo img.white { filter: brightness(0) invert(1); }
+  .wordmark {
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 0.22em;
+    color: #fff;
+    font-family: "Inter", sans-serif;
+  }
+
+  .lang {
+    display: inline-flex;
+    padding: 4px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+  .lang button {
+    appearance: none;
+    border: 0;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.85);
+    font: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 7px 16px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+  }
+  .lang button[aria-pressed="true"] { background: #fff; color: var(--purple-700); font-weight: 600; }
+  .lang button:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+
+  /* ===== Card ===== */
+  .wrap { width: 100%; max-width: 592px; margin: -84px auto 0; padding: 0 16px 48px; position: relative; }
+  .card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    padding: 38px 34px 34px;
+    box-shadow: 0 30px 70px rgba(76, 29, 149, 0.16), 0 4px 14px rgba(76, 29, 149, 0.06);
+  }
+  .eyebrow {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--purple-500);
+    margin-bottom: 10px;
+  }
+  :root[lang="ar"] .eyebrow { letter-spacing: 0; font-size: 13px; text-transform: none; }
+  h1 { font-size: 29px; line-height: 1.22; margin: 0 0 10px; font-weight: 700; letter-spacing: -0.015em; color: var(--ink); }
+  :root[lang="ar"] h1 { letter-spacing: 0; line-height: 1.4; }
+  .sub { color: var(--muted); margin: 0 0 28px; font-size: 15.5px; }
+
+  /* ===== Start screen ===== */
+  .choices { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .choice {
+    appearance: none;
+    font: inherit;
+    color: var(--ink);
+    text-align: center;
+    cursor: pointer;
+    background: var(--soft);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 26px 12px 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.15s, border-color 0.2s, background 0.2s, box-shadow 0.2s;
+  }
+  .choice:hover { transform: translateY(-2px); background: #fff; }
+  .choice:focus-visible { outline: 2px solid var(--purple-500); outline-offset: 3px; }
+  .choice.wa:hover { border-color: #22c55e; box-shadow: 0 12px 30px rgba(34, 197, 94, 0.16); }
+  .choice.form:hover { border-color: var(--purple-500); box-shadow: 0 12px 30px rgba(124, 58, 237, 0.18); }
+  .choice .emoji { font-size: 38px; line-height: 1; }
+  .choice .name { font-weight: 600; font-size: 16px; }
+  .choice .hint { font-size: 13px; color: var(--muted); }
+  .note { margin: 16px 0 0; min-height: 20px; font-size: 14px; color: var(--muted); text-align: center; }
+
+  .back {
+    appearance: none;
+    background: none;
+    border: 0;
+    color: var(--muted);
+    font: inherit;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 0;
+    margin-bottom: 18px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .back:hover { color: var(--purple-600); }
+  .back:focus-visible { outline: 2px solid var(--purple-500); outline-offset: 3px; border-radius: 4px; }
+  :root[dir="rtl"] .back .arrow { transform: scaleX(-1); }
+
+  /* ===== Fields ===== */
+  .field { margin-bottom: 18px; }
+  label, .label {
+    display: block;
+    font-size: 13.5px;
+    font-weight: 600;
+    margin-bottom: 7px;
+    color: #3a3358;
+  }
+  .req { color: var(--purple-500); margin-inline-start: 3px; }
+
+  input, select, textarea {
+    width: 100%;
+    font: inherit;
+    font-size: 15.5px;
+    color: var(--ink);
+    background: #fff;
+    border: 1px solid var(--field-line);
+    border-radius: 12px;
+    padding: 13px 14px;
+    min-height: 48px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  textarea { resize: vertical; min-height: 96px; }
+  input::placeholder, textarea::placeholder { color: #a39dbb; }
+  input:hover, select:hover, textarea:hover { border-color: #bfb3e3; }
+  input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--purple-500);
+    box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.15);
+  }
+  .invalid input, .invalid select, .invalid textarea { border-color: var(--danger); }
+  .err { display: none; color: var(--danger); font-size: 13px; margin-top: 6px; }
+  .invalid .err { display: block; }
+
+  select {
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    text-overflow: ellipsis;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9' fill='none'><path d='M1 1.5l6 6 6-6' stroke='%237c3aed' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-inline-end: 40px;
+  }
+  :root[dir="rtl"] select { background-position: left 14px center; }
+  select option, select optgroup { background: #fff; color: var(--ink); }
+  select:invalid, select.placeholder { color: #a39dbb; }
+
+  .phone { display: flex; gap: 10px; direction: ltr; }
+  .phone select { width: 168px; flex: none; text-align: start; padding-inline-start: 12px; padding-inline-end: 34px; }
+  .phone input { flex: 1; min-width: 0; text-align: start; }
+  :root[dir="rtl"] .phone select { background-position: right 14px center; }
+
+  .other-wrap { display: none; margin-top: 12px; }
+  .other-wrap.show { display: block; }
+
+  .consent { font-size: 12.5px; color: var(--muted); margin: 6px 0 20px; }
+  .consent a { color: var(--purple-600); text-decoration: underline; text-underline-offset: 3px; }
+
+  .submit {
+    width: 100%;
+    appearance: none;
+    border: 0;
+    cursor: pointer;
+    font: inherit;
+    font-weight: 600;
+    font-size: 16px;
+    color: #fff;
+    padding: 15px 20px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--purple-700) 0%, var(--purple-500) 55%, var(--purple-400) 100%);
+    box-shadow: 0 12px 28px rgba(109, 40, 217, 0.32);
+    transition: transform 0.15s, box-shadow 0.2s, opacity 0.2s;
+  }
+  .submit:hover { transform: translateY(-1px); box-shadow: 0 16px 34px rgba(109, 40, 217, 0.4); }
+  .submit:focus-visible { outline: 2px solid var(--purple-700); outline-offset: 3px; }
+  .submit[disabled] { opacity: 0.65; cursor: progress; transform: none; }
+
+  .status { margin-top: 14px; font-size: 14px; min-height: 20px; color: var(--danger); }
+
+  .success { text-align: center; padding: 14px 4px 6px; }
+  .tick {
+    width: 64px; height: 64px; margin: 0 auto 18px; border-radius: 50%;
+    display: grid; place-items: center;
+    background: rgba(22, 163, 74, 0.1);
+    border: 1px solid rgba(22, 163, 74, 0.35);
+  }
+  .tick svg { width: 30px; height: 30px; }
+  .success h2 { margin: 0 0 8px; font-size: 24px; color: var(--ink); }
+  .success p { color: var(--muted); margin: 0 0 20px; }
+  .wa-btn {
+    display: none;
+    justify-content: center;
+    text-decoration: none;
+    color: #fff;
+    background: var(--ok);
+    font-weight: 600;
+    padding: 13px 22px;
+    border-radius: 12px;
+  }
+  .wa-btn.show { display: inline-flex; }
+
+  .tagline {
+    text-align: center;
+    color: var(--purple-700);
+    font-size: 13.5px;
+    font-weight: 500;
+    margin: 24px 0 0;
+  }
+  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+  @media (max-width: 480px) {
+    .hero { padding-bottom: 110px; }
+    .card { padding: 28px 20px 24px; border-radius: 18px; }
+    h1 { font-size: 24px; }
+    .phone select { width: 136px; }
+    .choices { gap: 10px; }
+    .choice { padding: 20px 8px 16px; }
+    .choice .emoji { font-size: 32px; }
+    .choice .name { font-size: 15px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="hero">
+    <header class="topbar">
+      <div class="logo" id="logo">
+        <!-- Put your logo file next to this HTML file and name it shaffra-logo.png (or change the path below).
+             The logo sits on the purple band, so a white or light version works best. -->
+        <img src="shaffra-logo.png" alt="Shaffra" id="logoImg">
+      </div>
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-lang="en" aria-pressed="true">English</button>
+        <button type="button" data-lang="ar" aria-pressed="false" lang="ar">العربية</button>
+      </div>
+    </header>
+  </div>
+
+  <div class="wrap">
+    <main class="card">
+
+      <!-- Step 1: how would you like to connect -->
+      <div id="chooseView">
+        <span class="eyebrow" data-i18n="chEyebrow">Get in touch</span>
+        <h1 data-i18n="chTitle">How would you like to connect with our team?</h1>
+        <p class="sub" data-i18n="chSub">Choose what suits you best.</p>
+
+        <div class="choices">
+          <button type="button" class="choice wa" id="chooseWa">
+            <span class="emoji" aria-hidden="true">💬</span>
+            <span class="name" data-i18n="chWa">Directly on WhatsApp</span>
+            <span class="hint" data-i18n="chWaHint">Chat with us now</span>
+          </button>
+          <button type="button" class="choice form" id="chooseForm">
+            <span class="emoji" aria-hidden="true">📝</span>
+            <span class="name" data-i18n="chForm">Contact form</span>
+            <span class="hint" data-i18n="chFormHint">We reply the same day</span>
+          </button>
+        </div>
+        <p class="note" id="waNote" role="status" aria-live="polite"></p>
+      </div>
+
+      <!-- Step 2: contact form -->
+      <div id="formView" hidden>
+        <button type="button" class="back" id="backBtn"><span class="arrow" aria-hidden="true">←</span><span data-i18n="back">Back</span></button>
+        <span class="eyebrow" data-i18n="eyebrow">Book a demo</span>
+        <h1 data-i18n="title">See an AI employee run your workflow</h1>
+        <p class="sub" data-i18n="sub">Tell us what you want to automate. Our team will reply the same day.</p>
+
+        <form id="leadForm" novalidate>
+          <div class="hp" aria-hidden="true">
+            <label>Leave this empty <input type="text" name="_honey" tabindex="-1" autocomplete="off"></label>
+          </div>
+
+          <div class="field" id="f-name">
+            <label for="name"><span data-i18n="name">Full name</span><span class="req">*</span></label>
+            <input id="name" name="name" type="text" autocomplete="name" data-i18n-ph="namePh" placeholder="Your full name">
+            <div class="err" data-i18n="errName">Please enter your name.</div>
+          </div>
+
+          <div class="field" id="f-email">
+            <label for="email"><span data-i18n="email">Work email</span><span class="req">*</span></label>
+            <input id="email" name="email" type="email" autocomplete="email" inputmode="email" dir="ltr" data-i18n-ph="emailPh" placeholder="name@company.com">
+            <div class="err" data-i18n="errEmail">Please enter a valid email address.</div>
+          </div>
+
+          <div class="field" id="f-phone">
+            <label for="phone"><span data-i18n="phone">Phone number</span><span class="req">*</span></label>
+            <div class="phone">
+              <select id="code" name="country_code" aria-label="Country code"></select>
+              <input id="phone" name="phone" type="tel" autocomplete="tel-national" inputmode="tel" data-i18n-ph="phonePh" placeholder="Phone number">
+            </div>
+            <div class="err" data-i18n="errPhone">Please enter a valid phone number.</div>
+          </div>
+
+          <div class="field" id="f-interest">
+            <label for="interest"><span data-i18n="interest">What are you interested in?</span><span class="req">*</span></label>
+            <select id="interest" name="interest"></select>
+            <div class="err" data-i18n="errInterest">Please choose an option.</div>
+
+            <div class="other-wrap" id="otherWrap">
+              <label for="other"><span data-i18n="other">Tell us what you need</span><span class="req">*</span></label>
+              <textarea id="other" name="interest_other" data-i18n-ph="otherPh" placeholder="Describe the workflow or team you have in mind"></textarea>
+              <div class="err" data-i18n="errOther">Please tell us a little more.</div>
+            </div>
+          </div>
+
+          <p class="consent">
+            <span data-i18n="consent">By sending this form you agree to our</span>
+            <a href="https://www.shaffra.com/privacy-policy" target="_blank" rel="noopener" data-i18n="privacy">Privacy Policy</a>.
+          </p>
+
+          <button class="submit" type="submit" id="submitBtn" data-i18n="submit">Request a demo</button>
+          <div class="status" id="status" role="alert" aria-live="polite"></div>
+        </form>
+      </div>
+
+      <!-- Step 3: thank you -->
+      <div class="success" id="successView" aria-live="polite" hidden>
+        <div class="tick">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+        </div>
+        <h2 data-i18n="thanksTitle">Thank you</h2>
+        <p data-i18n="thanksText">We received your request. Our team will contact you the same day.</p>
+        <a class="wa-btn" id="waBtn" href="#" target="_blank" rel="noopener" data-i18n="wa">Message us on WhatsApp</a>
+      </div>
+    </main>
+
+    <p class="tagline" data-i18n="tagline">AI that works, rules that govern, people that decide.</p>
+  </div>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ===== Settings you may want to change ===== */
+  var CONFIG = {
+    // FormSubmit emails each submission to this inbox. The first submission triggers an activation email to this address.
+    endpoint: "https://formsubmit.co/ajax/pranav@shaffra.com",
+    // Google Sheets link. Paste the Web app URL from your Apps Script deployment (ends with /exec).
+    // Leave empty to send email only. See shaffra-leads-sheet-script.gs for the setup steps.
+    sheetsEndpoint: "https://script.google.com/macros/s/AKfycbyIa25igGFgl6nd-ZLsqbOF0esZwBKyNoFCcG0L7HKPBVmjADJDjorMC4RO1Fhrirozwg/exec",
+    // WhatsApp number: digits only, international format, no plus sign (for example 9665XXXXXXXX).
+    // Leave empty until you have it. The "Directly on WhatsApp" option then shows a short notice instead of redirecting.
+    whatsappNumber: ""
+  };
+
+  /* Country calling codes, worldwide. Country names are generated in the visitor's language by the browser. */
+  var GCC = ["SA", "AE", "QA", "KW", "BH", "OM"];
+  var DIAL_RAW =
+    "AF:93,AL:355,DZ:213,AS:1,AD:376,AO:244,AI:1,AG:1,AR:54,AM:374,AW:297,AU:61,AT:43,AZ:994,BS:1,BH:973,BD:880,BB:1,BY:375,BE:32," +
+    "BZ:501,BJ:229,BM:1,BT:975,BO:591,BA:387,BW:267,BR:55,IO:246,VG:1,BN:673,BG:359,BF:226,BI:257,KH:855,CM:237,CA:1,CV:238,KY:1," +
+    "CF:236,TD:235,CL:56,CN:86,CO:57,KM:269,CG:242,CD:243,CK:682,CR:506,CI:225,HR:385,CU:53,CW:599,CY:357,CZ:420,DK:45,DJ:253," +
+    "DM:1,DO:1,EC:593,EG:20,SV:503,GQ:240,ER:291,EE:372,SZ:268,ET:251,FK:500,FO:298,FJ:679,FI:358,FR:33,GF:594,PF:689,GA:241," +
+    "GM:220,GE:995,DE:49,GH:233,GI:350,GR:30,GL:299,GD:1,GP:590,GU:1,GT:502,GG:44,GN:224,GW:245,GY:592,HT:509,HN:504,HK:852," +
+    "HU:36,IS:354,IN:91,ID:62,IR:98,IQ:964,IE:353,IM:44,IL:972,IT:39,JM:1,JP:81,JE:44,JO:962,KZ:7,KE:254,KI:686,XK:383,KW:965," +
+    "KG:996,LA:856,LV:371,LB:961,LS:266,LR:231,LY:218,LI:423,LT:370,LU:352,MO:853,MG:261,MW:265,MY:60,MV:960,ML:223,MT:356," +
+    "MH:692,MQ:596,MR:222,MU:230,YT:262,MX:52,FM:691,MD:373,MC:377,MN:976,ME:382,MS:1,MA:212,MZ:258,MM:95,NA:264,NR:674,NP:977," +
+    "NL:31,NC:687,NZ:64,NI:505,NE:227,NG:234,NU:683,KP:850,MK:389,MP:1,NO:47,OM:968,PK:92,PW:680,PS:970,PA:507,PG:675,PY:595," +
+    "PE:51,PH:63,PL:48,PT:351,PR:1,QA:974,RE:262,RO:40,RU:7,RW:250,WS:685,SM:378,ST:239,SA:966,SN:221,RS:381,SC:248,SL:232," +
+    "SG:65,SX:1,SK:421,SI:386,SB:677,SO:252,ZA:27,KR:82,SS:211,ES:34,LK:94,SD:249,SR:597,SE:46,CH:41,SY:963,TW:886,TJ:992," +
+    "TZ:255,TH:66,TL:670,TG:228,TK:690,TO:676,TT:1,TN:216,TR:90,TM:993,TC:1,TV:688,UG:256,UA:380,AE:971,GB:44,US:1,UY:598," +
+    "UZ:998,VU:678,VE:58,VN:84,VI:1,WF:681,YE:967,ZM:260,ZW:263";
+  var DIAL = {};
+  DIAL_RAW.split(",").forEach(function (p) { var a = p.split(":"); DIAL[a[0]] = a[1]; });
+
+  /* The English label is what lands in your inbox and your sheet. */
+  var OPTIONS = [
+    { v: "Enterprise Intelligence",         en: "Enterprise Intelligence",          ar: "الذكاء المؤسسي" },
+    { v: "AI for Sales",                    en: "AI for Sales",                     ar: "الذكاء الاصطناعي للمبيعات" },
+    { v: "Project Management (PM and PMO)", en: "Project Management (PM and PMO)",  ar: "إدارة المشاريع" },
+    { v: "Operations",                      en: "Operations",                       ar: "العمليات" },
+    { v: "Finance",                         en: "Finance",                          ar: "المالية" },
+    { v: "Call Center",                     en: "Call Center",                      ar: "مركز الاتصال" },
+    { v: "Customer Support and Service",    en: "Customer Support and Service",     ar: "خدمة العملاء والدعم" },
+    { v: "HR and Recruitment",              en: "HR and Recruitment",               ar: "الموارد البشرية والتوظيف" },
+    { v: "Government AI",                   en: "Government AI",                    ar: "الذكاء الاصطناعي للجهات الحكومية" },
+    { v: "Knowledge Hub and Organisational Memory", en: "Knowledge Hub and Organisational Memory", ar: "مركز المعرفة والذاكرة المؤسسية" },
+    { v: "Shaffra Talk (avatars and voice)", en: "Shaffra Talk (avatars and voice)", ar: "شفرا توك (الأفاتار والصوت)" },
+    { v: "On-premise or sovereign deployment", en: "On-premise or sovereign deployment", ar: "النشر داخل المؤسسة أو السيادي" },
+    { v: "__other__",                       en: "Other (write your own)",           ar: "أخرى (اكتب بنفسك)" }
+  ];
+
+  var T = {
+    en: {
+      chEyebrow: "Get in touch",
+      chTitle: "How would you like to connect with our team?",
+      chSub: "Choose what suits you best.",
+      chWa: "Directly on WhatsApp", chWaHint: "Chat with us now",
+      chForm: "Contact form", chFormHint: "We reply the same day",
+      back: "Back",
+      waSoon: "Our WhatsApp number is coming soon. Please use the contact form for now.",
+      eyebrow: "Book a demo",
+      title: "See an AI employee run your workflow",
+      sub: "Tell us what you want to automate. Our team will reply the same day.",
+      name: "Full name", namePh: "Your full name",
+      email: "Work email", emailPh: "name@company.com",
+      phone: "Phone number", phonePh: "Phone number",
+      gcc: "Gulf (GCC)", world: "All countries",
+      interest: "What are you interested in?", choose: "Choose an option",
+      other: "Tell us what you need", otherPh: "Describe the workflow or team you have in mind",
+      consent: "By sending this form you agree to our", privacy: "Privacy Policy",
+      submit: "Request a demo", sending: "Sending...",
+      errName: "Please enter your name.",
+      errEmail: "Please enter a valid email address.",
+      errPhone: "Please enter a valid phone number.",
+      errInterest: "Please choose an option.",
+      errOther: "Please tell us a little more.",
+      errSend: "We could not send your request. Please try again in a moment.",
+      thanksTitle: "Thank you",
+      thanksText: "We received your request. Our team will contact you the same day.",
+      wa: "Message us on WhatsApp",
+      waText: "Hi Shaffra, I would like to book a demo",
+      tagline: "AI that works, rules that govern, people that decide."
+    },
+    ar: {
+      chEyebrow: "تواصل معنا",
+      chTitle: "كيف تفضل التواصل مع فريقنا؟",
+      chSub: "اختر الطريقة الأنسب لك.",
+      chWa: "مباشرة عبر واتساب", chWaHint: "تحدث معنا الآن",
+      chForm: "نموذج التواصل", chFormHint: "نرد عليك في اليوم نفسه",
+      back: "رجوع",
+      waSoon: "رقم واتساب سيتوفر قريباً. يرجى استخدام نموذج التواصل حالياً.",
+      eyebrow: "احجز عرضاً تجريبياً",
+      title: "شاهد موظفاً بالذكاء الاصطناعي يدير سير عملك",
+      sub: "أخبرنا ما الذي تريد أتمتته، وسيتواصل معك فريقنا في اليوم نفسه.",
+      name: "الاسم الكامل", namePh: "اسمك الكامل",
+      email: "البريد الإلكتروني للعمل", emailPh: "name@company.com",
+      phone: "رقم الهاتف", phonePh: "رقم الهاتف",
+      gcc: "دول الخليج", world: "جميع الدول",
+      interest: "ما المجال الذي يهمك؟", choose: "اختر مجالاً",
+      other: "أخبرنا بما تحتاجه", otherPh: "صف سير العمل أو الفريق الذي تفكر فيه",
+      consent: "بإرسال هذا النموذج فإنك توافق على", privacy: "سياسة الخصوصية",
+      submit: "اطلب عرضاً تجريبياً", sending: "جارٍ الإرسال...",
+      errName: "يرجى إدخال اسمك.",
+      errEmail: "يرجى إدخال بريد إلكتروني صحيح.",
+      errPhone: "يرجى إدخال رقم هاتف صحيح.",
+      errInterest: "يرجى اختيار أحد الخيارات.",
+      errOther: "يرجى إخبارنا بالمزيد.",
+      errSend: "تعذر إرسال طلبك. يرجى المحاولة مرة أخرى بعد قليل.",
+      thanksTitle: "شكراً لك",
+      thanksText: "استلمنا طلبك وسيتواصل معك فريقنا في اليوم نفسه.",
+      wa: "راسلنا على واتساب",
+      waText: "مرحباً شفرا، أرغب في حجز عرض تجريبي",
+      tagline: "ذكاء اصطناعي ينجز العمل، وقواعد تحكمه، وأشخاص يقررون."
+    }
+  };
+
+  var lang = "en";
+  var $ = function (id) { return document.getElementById(id); };
+  var form = $("leadForm"), interest = $("interest"), code = $("code"), otherWrap = $("otherWrap");
+
+  function save(l) { try { localStorage.setItem("shaffra_form_lang", l); } catch (e) {} }
+  function load() { try { return localStorage.getItem("shaffra_form_lang"); } catch (e) { return null; } }
+
+  function regionNamer(l) {
+    var dn = null;
+    try { dn = new Intl.DisplayNames([l], { type: "region" }); } catch (e) { dn = null; }
+    return function (iso) {
+      try { var n = dn ? dn.of(iso) : iso; return n || iso; } catch (e) { return iso; }
+    };
+  }
+
+  function showView(name) {
+    ["chooseView", "formView", "successView"].forEach(function (id) { $(id).hidden = (id !== name); });
+    $("waNote").textContent = "";
+  }
+
+  function buildSelects() {
+    var keepInterest = interest.value, keepCode = code.value || "SA";
+    interest.innerHTML = "";
+    var ph = document.createElement("option");
+    ph.value = ""; ph.textContent = T[lang].choose; ph.disabled = true; ph.selected = true;
+    interest.appendChild(ph);
+    OPTIONS.forEach(function (o) {
+      var op = document.createElement("option");
+      op.value = o.v; op.textContent = o[lang];
+      interest.appendChild(op);
+    });
+    if (keepInterest) interest.value = keepInterest;
+    interest.classList.toggle("placeholder", !interest.value);
+
+    var name = regionNamer(lang);
+    function addOpt(parent, iso) {
+      var op = document.createElement("option");
+      op.value = iso; op.textContent = "+" + DIAL[iso] + "  " + name(iso);
+      parent.appendChild(op);
+    }
+    code.innerHTML = "";
+    var g1 = document.createElement("optgroup"); g1.label = T[lang].gcc;
+    GCC.forEach(function (iso) { addOpt(g1, iso); });
+    code.appendChild(g1);
+    var rest = Object.keys(DIAL).filter(function (iso) { return GCC.indexOf(iso) < 0; });
+    rest.sort(function (a, b) { return name(a).localeCompare(name(b), lang); });
+    var g2 = document.createElement("optgroup"); g2.label = T[lang].world;
+    rest.forEach(function (iso) { addOpt(g2, iso); });
+    code.appendChild(g2);
+    code.value = keepCode;
+  }
+
+  function applyLang(l) {
+    lang = l;
+    var root = document.documentElement;
+    root.lang = l;
+    root.dir = l === "ar" ? "rtl" : "ltr";
+    document.querySelectorAll("[data-i18n]").forEach(function (el) { el.textContent = T[l][el.getAttribute("data-i18n")]; });
+    document.querySelectorAll("[data-i18n-ph]").forEach(function (el) { el.placeholder = T[l][el.getAttribute("data-i18n-ph")]; });
+    document.querySelectorAll(".lang button").forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-lang") === l)); });
+    document.title = (l === "ar" ? "احجز عرضاً تجريبياً | شفرا" : "Book a demo | Shaffra");
+    buildSelects();
+    $("status").textContent = "";
+    $("waNote").textContent = "";
+    var num = (CONFIG.whatsappNumber || "").replace(/\D/g, "");
+    if (num) {
+      var wa = $("waBtn");
+      wa.href = "https://wa.me/" + num + "?text=" + encodeURIComponent(T[l].waText);
+      wa.classList.add("show");
+    }
+  }
+
+  document.querySelectorAll(".lang button").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var l = b.getAttribute("data-lang");
+      applyLang(l); save(l);
+    });
+  });
+
+  /* Step 1 choices */
+  $("chooseWa").addEventListener("click", function () {
+    var num = (CONFIG.whatsappNumber || "").replace(/\D/g, "");
+    if (!num) { $("waNote").textContent = T[lang].waSoon; return; }
+    window.location.href = "https://wa.me/" + num + "?text=" + encodeURIComponent(T[lang].waText);
+  });
+  $("chooseForm").addEventListener("click", function () {
+    showView("formView");
+    $("name").focus();
+  });
+  $("backBtn").addEventListener("click", function () { showView("chooseView"); });
+
+  /* Logo: fall back to a text wordmark if the image file is missing. */
+  $("logoImg").addEventListener("error", function () {
+    var w = document.createElement("span");
+    w.className = "wordmark"; w.textContent = "SHAFFRA";
+    this.replaceWith(w);
+  });
+
+  interest.addEventListener("change", function () {
+    interest.classList.remove("placeholder");
+    var isOther = interest.value === "__other__";
+    otherWrap.classList.toggle("show", isOther);
+    if (isOther) $("other").focus();
+  });
+
+  function setInvalid(id, bad) { $(id).classList.toggle("invalid", !!bad); return !bad; }
+
+  function validate() {
+    var ok = true;
+    ok = setInvalid("f-name", $("name").value.trim().length < 2) && ok;
+    ok = setInvalid("f-email", !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test($("email").value.trim())) && ok;
+    var digits = $("phone").value.replace(/[^\d]/g, "");
+    ok = setInvalid("f-phone", digits.length < 6 || digits.length > 14) && ok;
+    var isOther = interest.value === "__other__";
+    var interestBad = !interest.value || (isOther && $("other").value.trim().length < 3);
+    var f = $("f-interest");
+    f.classList.toggle("invalid", !!interestBad);
+    /* Show the matching message */
+    f.querySelectorAll(".err")[0].style.display = (!interest.value) ? "block" : "none";
+    f.querySelectorAll(".err")[1].style.display = (isOther && $("other").value.trim().length < 3) ? "block" : "none";
+    if (interestBad) ok = false;
+    return ok;
+  }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    $("status").textContent = "";
+    if (!validate()) {
+      var first = document.querySelector(".invalid input, .invalid select, .invalid textarea");
+      if (first) first.focus();
+      return;
+    }
+    var btn = $("submitBtn");
+    btn.disabled = true; btn.textContent = T[lang].sending;
+
+    var isOther = interest.value === "__other__";
+    var label = OPTIONS.filter(function (o) { return o.v === interest.value; })[0];
+    var payload = {
+      "Name": $("name").value.trim(),
+      "Email": $("email").value.trim(),
+      "Phone": "+" + DIAL[code.value] + " " + $("phone").value.trim(),
+      "Phone country": regionNamer("en")(code.value),
+      "Interested in": isOther ? "Other" : label.en,
+      "Other (written by lead)": isOther ? $("other").value.trim() : "",
+      "Form language": lang === "ar" ? "Arabic" : "English",
+      "Page": location.href,
+      "_subject": "Shaffra demo request: " + $("name").value.trim(),
+      "_template": "table",
+      "_captcha": "false",
+      "_replyto": $("email").value.trim(),
+      "_honey": form.elements["_honey"].value
+    };
+
+    /* 1) Email to your inbox */
+    var emailReq = fetch(CONFIG.endpoint, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify(payload)
+    })
+    .then(function (r) { return r.json().then(function (d) { return r.ok && String(d.success) === "true"; }); })
+    .catch(function () { return false; });
+
+    /* 2) Row in your Google Sheet (the browser cannot read this reply, so "no error" counts as sent) */
+    var sheetReq = CONFIG.sheetsEndpoint
+      ? fetch(CONFIG.sheetsEndpoint, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify(payload)
+        }).then(function () { return true; }).catch(function () { return false; })
+      : Promise.resolve(false);
+
+    Promise.all([emailReq, sheetReq]).then(function (r) {
+      if (r[0] || r[1]) {
+        showView("successView");
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        $("status").textContent = T[lang].errSend;
+        btn.disabled = false; btn.textContent = T[lang].submit;
+      }
+    });
+  });
+
+  var saved = load();
+  var start = saved || ((navigator.language || "").toLowerCase().indexOf("ar") === 0 ? "ar" : "en");
+  applyLang(start === "ar" ? "ar" : "en");
+  showView("chooseView");
+})();
+</script>
+</body>
+</html>
