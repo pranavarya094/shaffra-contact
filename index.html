@@ -292,11 +292,7 @@
 
   <div class="hero">
     <header class="topbar">
-      <div class="logo" id="logo">
-        <!-- Put your logo file next to this HTML file and name it shaffra-logo.png (or change the path below).
-             The logo sits on the purple band, so a white or light version works best. -->
-        <img src="shaffra-logo.png" alt="Shaffra" id="logoImg" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'wordmark',textContent:'SHAFFRA'}))">
-      </div>
+      <div class="logo" id="logo" style="color:#fff"><svg class="logo-svg" width="124" height="39" viewBox="0 0 101 32" fill="none" role="img" aria-label="Shaffra"><g fill="currentColor"><path d="M20.18 6.064c3.7 3.009 4.657 7.962 2.136 11.064s-7.566 3.178-11.267.17S6.392 9.336 8.913 6.234s7.566-3.178 11.267-.17m.105 1.222c-2.724-2.214-6.438-2.158-8.294.125s-1.152 5.93 1.572 8.145 6.437 2.158 8.293-.125c1.857-2.284 1.154-5.93-1.57-8.145"></path><path d="M20.48 6.684c-4.285-3.39-9.89-3.49-12.635-.179-2.795 3.373-1.564 9.005 2.75 12.58 4.313 3.575 10.076 3.738 12.87.366.93-1.121 1.412-2.492 1.486-3.954.055 2.037-.531 3.985-1.825 5.546-3.303 3.985-9.947 3.928-14.839-.126S2.107 10.344 5.41 6.359s9.947-3.93 14.839.125q.117.1.232.2"></path><path d="M23.964 22.054a9 9 0 0 1-.338.627c-2.972 4.993-10.223 5.936-16.195 2.107-5.973-3.83-8.405-10.983-5.433-15.976C3.132 6.905 4.892 5.59 6.965 4.906a8.6 8.6 0 0 0-3.028 3.012c-2.895 4.864-.62 11.77 5.08 15.425 5.33 3.417 11.766 2.783 14.947-1.289"></path><path d="M22.831 24.883q-.309.315-.642.611C16.6 30.463 8.04 29.96 3.07 24.368c-4.968-5.59-4.463-14.151 1.127-19.12l.073-.063C-.713 10.22-.989 18.327 3.782 23.697c4.948 5.567 13.457 6.09 19.049 1.186M19.816 8.355c.807 1.42.828 3.06-.092 4.192-1.28 1.574-3.895 1.568-5.841-.014s-2.486-4.14-1.206-5.715c1.156-1.422 3.4-1.553 5.258-.4-.81-.251-1.643-.086-2.121.502-.673.828-.389 2.173.634 3.004s2.397.834 3.07.007c.35-.433.439-1.007.298-1.576"></path><path d="M51.232 12.688H47.9v-2.632h-3.353v13.14H47.9v-8.293h2.193c1.72 0 2.364.736 2.364 2.37v5.923h3.353V16.59c0-2.758-1.89-3.903-4.577-3.903M82.054 13.071h-3.092v-1.485c0-.539.517-.514.87-.514h2.258V8.804H78.9c-2.004 0-2.956.848-2.956 2.782v1.485h-3.975v-1.485c0-.539.517-.514.87-.514h2.257V8.804h-3.19c-2.005 0-2.956.848-2.956 2.782v11.61h3.159v-7.987h3.827v7.987h3.159v-7.987h2.957v-2.138zM87.485 12.56c-3.14 0-4.77 1.117-4.77 4.346v6.29h3.14v-5.4c0-1.904.644-3 2.495-3H89.6V12.56h-2.114M40.326 17.135l-2.346-.763c-.624-.2-1.23-.479-1.23-1.041 0-.482.36-.541.794-.541h5.373v-2.231h-6.244c-1.874 0-2.763.863-2.763 2.83 0 1.766.7 2.528 2.555 3.13l2.043.662c.587.201 1.76.342 1.76 1.064 0 .503-.284.643-.681.643h-5.563v2.308h6.716c1.798 0 2.555-.944 2.555-2.75 0-2.187-1.248-2.749-2.97-3.31M64.394 12.559h-6.587v2.248h5.4c.865 0 1.35.442 1.35 1.285v.461H59.7c-1.914 0-2.639 1.304-2.639 3.311 0 2.208.725 3.332 2.64 3.332h7.997V15.93c0-2.007-1.189-3.372-3.303-3.372m.162 8.469h-3.385c-.644 0-.927-.461-.927-1.144 0-.743.343-1.164.947-1.164h3.364v2.308zM97.557 12.559H90.97v2.248h5.4c.865 0 1.349.442 1.349 1.285v.461h-4.856c-1.914 0-2.639 1.304-2.639 3.311 0 2.208.725 3.332 2.64 3.332h7.997V15.93c0-2.007-1.189-3.372-3.304-3.372m.162 8.469h-3.385c-.644 0-.927-.461-.927-1.144 0-.743.343-1.164.947-1.164h3.364v2.308"></path></g></svg></div>
       <div class="lang" role="group" aria-label="Language">
         <button type="button" data-lang="en" aria-pressed="true">English</button>
         <button type="button" data-lang="ar" aria-pressed="false" lang="ar">العربية</button>
@@ -307,30 +303,8 @@
   <div class="wrap">
     <main class="card">
 
-      <!-- Step 1: how would you like to connect -->
-      <div id="chooseView">
-        <span class="eyebrow" data-i18n="chEyebrow">Get in touch</span>
-        <h1 data-i18n="chTitle">How would you like to connect with our team?</h1>
-        <p class="sub" data-i18n="chSub">Choose what suits you best.</p>
-
-        <div class="choices">
-          <button type="button" class="choice wa" id="chooseWa">
-            <span class="emoji" aria-hidden="true">💬</span>
-            <span class="name" data-i18n="chWa">Directly on WhatsApp</span>
-            <span class="hint" data-i18n="chWaHint">Chat with us now</span>
-          </button>
-          <button type="button" class="choice form" id="chooseForm">
-            <span class="emoji" aria-hidden="true">📝</span>
-            <span class="name" data-i18n="chForm">Contact form</span>
-            <span class="hint" data-i18n="chFormHint">We reply the same day</span>
-          </button>
-        </div>
-        <p class="note" id="waNote" role="status" aria-live="polite"></p>
-      </div>
-
-      <!-- Step 2: contact form -->
-      <div id="formView" hidden>
-        <button type="button" class="back" id="backBtn"><span class="arrow" aria-hidden="true">←</span><span data-i18n="back">Back</span></button>
+      <!-- Contact form -->
+      <div id="formView">
         <span class="eyebrow" data-i18n="eyebrow">Book a demo</span>
         <h1 data-i18n="title">See an AI employee run your workflow</h1>
         <p class="sub" data-i18n="sub">Tell us what you want to automate. Our team will reply the same day.</p>
@@ -390,7 +364,6 @@
         </div>
         <h2 data-i18n="thanksTitle">Thank you</h2>
         <p data-i18n="thanksText">We received your request. Our team will contact you the same day.</p>
-        <a class="wa-btn" id="waBtn" href="#" target="_blank" rel="noopener" data-i18n="wa">Message us on WhatsApp</a>
       </div>
     </main>
 
@@ -408,9 +381,6 @@
     // Google Sheets link. Paste the Web app URL from your Apps Script deployment (ends with /exec).
     // Leave empty to send email only. See shaffra-leads-sheet-script.gs for the setup steps.
     sheetsEndpoint: "https://script.google.com/macros/s/AKfycbyIa25igGFgl6nd-ZLsqbOF0esZwBKyNoFCcG0L7HKPBVmjADJDjorMC4RO1Fhrirozwg/exec",
-    // WhatsApp number: digits only, international format, no plus sign (for example 9665XXXXXXXX).
-    // Leave empty until you have it. The "Directly on WhatsApp" option then shows a short notice instead of redirecting.
-    whatsappNumber: ""
   };
 
   /* Country calling codes, worldwide. Country names are generated in the visitor's language by the browser. */
@@ -530,8 +500,7 @@
   }
 
   function showView(name) {
-    ["chooseView", "formView", "successView"].forEach(function (id) { $(id).hidden = (id !== name); });
-    $("waNote").textContent = "";
+    ["formView", "successView"].forEach(function (id) { $(id).hidden = (id !== name); });
   }
 
   function buildSelects() {
@@ -578,12 +547,6 @@
     buildSelects();
     $("status").textContent = "";
     $("waNote").textContent = "";
-    var num = (CONFIG.whatsappNumber || "").replace(/\D/g, "");
-    if (num) {
-      var wa = $("waBtn");
-      wa.href = "https://wa.me/" + num + "?text=" + encodeURIComponent(T[l].waText);
-      wa.classList.add("show");
-    }
   }
 
   document.querySelectorAll(".lang button").forEach(function (b) {
@@ -593,24 +556,6 @@
     });
   });
 
-  /* Step 1 choices */
-  $("chooseWa").addEventListener("click", function () {
-    var num = (CONFIG.whatsappNumber || "").replace(/\D/g, "");
-    if (!num) { $("waNote").textContent = T[lang].waSoon; return; }
-    window.location.href = "https://wa.me/" + num + "?text=" + encodeURIComponent(T[lang].waText);
-  });
-  $("chooseForm").addEventListener("click", function () {
-    showView("formView");
-    $("name").focus();
-  });
-  $("backBtn").addEventListener("click", function () { showView("chooseView"); });
-
-  /* Logo: fall back to a text wordmark if the image file is missing. */
-  $("logoImg").addEventListener("error", function () {
-    var w = document.createElement("span");
-    w.className = "wordmark"; w.textContent = "SHAFFRA";
-    this.replaceWith(w);
-  });
 
   interest.addEventListener("change", function () {
     interest.classList.remove("placeholder");
@@ -700,7 +645,7 @@
   var saved = load();
   var start = saved || ((navigator.language || "").toLowerCase().indexOf("ar") === 0 ? "ar" : "en");
   applyLang(start === "ar" ? "ar" : "en");
-  showView("chooseView");
+  showView("formView");
 })();
 </script>
 </body>
