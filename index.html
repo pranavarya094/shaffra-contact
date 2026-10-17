@@ -353,6 +353,14 @@
     font-weight: 500;
     margin: 26px 0 0;
   }
+  .site { text-align: center; margin: 10px 0 0; font-size: 14px; color: var(--muted); }
+  .site a {
+    color: var(--accent-hover); font-weight: 600; text-decoration: none;
+    border-bottom: 1px solid rgba(166, 133, 255, 0.4); padding-bottom: 1px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .site a:hover { color: #fff; border-color: #fff; }
+  .site a:focus-visible { outline: 2px solid var(--accent-hover); outline-offset: 3px; border-radius: 3px; }
   .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 
   @media (max-width: 480px) {
@@ -483,6 +491,7 @@
     </main>
 
     <p class="tagline" data-i18n="tagline">AI that works, rules that govern, people that decide.</p>
+    <p class="site"><span data-i18n="siteQ">Want to see more?</span> <a href="https://www.shaffra.com" target="_blank" rel="noopener" dir="ltr">shaffra.com <span aria-hidden="true">&#8599;</span></a></p>
   </div>
 
 <script>
@@ -567,6 +576,7 @@
       wa: "Message us on WhatsApp",
       waText: "Hi Shaffra, I would like to book a demo",
       pitch: "<span class=\"l1\">Your team doesn't need another tool.</span><span class=\"l2\">It needs an <span class=\"grad\">AI workforce</span> that does the work.</span>",
+      siteQ: "Want to see more?",
       tagline: "AI that works, rules that govern, people that decide."
     },
     ar: {
@@ -599,6 +609,7 @@
       wa: "راسلنا على واتساب",
       waText: "مرحباً شفرا، أرغب في حجز عرض تجريبي",
       pitch: "<span class=\"l1\">فريقك لا يحتاج إلى أداة أخرى.</span><span class=\"l2\">يحتاج إلى <span class=\"grad\">قوة عاملة بالذكاء الاصطناعي</span> تُنجز العمل.</span>",
+      siteQ: "تريد معرفة المزيد؟",
       tagline: "ذكاء اصطناعي ينجز العمل، وقواعد تحكمه، وأشخاص يقررون."
     }
   };
