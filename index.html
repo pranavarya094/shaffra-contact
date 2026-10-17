@@ -303,8 +303,30 @@
   <div class="wrap">
     <main class="card">
 
-      <!-- Contact form -->
-      <div id="formView">
+      <!-- Step 1: how would you like to connect -->
+      <div id="chooseView">
+        <span class="eyebrow" data-i18n="chEyebrow">Get in touch</span>
+        <h1 data-i18n="chTitle">How would you like to connect with our team?</h1>
+        <p class="sub" data-i18n="chSub">Choose what suits you best.</p>
+
+        <div class="choices">
+          <button type="button" class="choice wa" id="chooseWa">
+            <span class="emoji" aria-hidden="true">💬</span>
+            <span class="name" data-i18n="chWa">Directly on WhatsApp</span>
+            <span class="hint" data-i18n="chWaHint">Chat with us now</span>
+          </button>
+          <button type="button" class="choice form" id="chooseForm">
+            <span class="emoji" aria-hidden="true">📝</span>
+            <span class="name" data-i18n="chForm">Contact form</span>
+            <span class="hint" data-i18n="chFormHint">We reply the same day</span>
+          </button>
+        </div>
+        <p class="note" id="waNote" role="status" aria-live="polite"></p>
+      </div>
+
+      <!-- Step 2: contact form -->
+      <div id="formView" hidden>
+        <button type="button" class="back" id="backBtn"><span class="arrow" aria-hidden="true">←</span><span data-i18n="back">Back</span></button>
         <span class="eyebrow" data-i18n="eyebrow">Book a demo</span>
         <h1 data-i18n="title">See an AI employee run your workflow</h1>
         <p class="sub" data-i18n="sub">Tell us what you want to automate. Our team will reply the same day.</p>
@@ -364,6 +386,7 @@
         </div>
         <h2 data-i18n="thanksTitle">Thank you</h2>
         <p data-i18n="thanksText">We received your request. Our team will contact you the same day.</p>
+        <a class="wa-btn" id="waBtn" href="#" target="_blank" rel="noopener" data-i18n="wa">Message us on WhatsApp</a>
       </div>
     </main>
 
@@ -381,6 +404,8 @@
     // Google Sheets link. Paste the Web app URL from your Apps Script deployment (ends with /exec).
     // Leave empty to send email only. See shaffra-leads-sheet-script.gs for the setup steps.
     sheetsEndpoint: "https://script.google.com/macros/s/AKfycbyIa25igGFgl6nd-ZLsqbOF0esZwBKyNoFCcG0L7HKPBVmjADJDjorMC4RO1Fhrirozwg/exec",
+    // WhatsApp number: digits only, international format, no plus sign.
+    whatsappNumber: "19295430460"
   };
 
   /* Country calling codes, worldwide. Country names are generated in the visitor's language by the browser. */
@@ -500,7 +525,8 @@
   }
 
   function showView(name) {
-    ["formView", "successView"].forEach(function (id) { $(id).hidden = (id !== name); });
+    ["chooseView", "formView", "successView"].forEach(function (id) { $(id).hidden = (id !== name); });
+    $("waNote").textContent = "";
   }
 
   function buildSelects() {
@@ -547,6 +573,12 @@
     buildSelects();
     $("status").textContent = "";
     $("waNote").textContent = "";
+    var num = (CONFIG.whatsappNumber || "").replace(/\D/g, "");
+    if (num) {
+      var wa = $("waBtn");
+      wa.href = "https://wa.me/" + num + "?text=" + encodeURIComponent(T[l].waText);
+      wa.classList.add("show");
+    }
   }
 
   document.querySelectorAll(".lang button").forEach(function (b) {
@@ -556,6 +588,18 @@
     });
   });
 
+
+  /* Step 1 choices */
+  $("chooseWa").addEventListener("click", function () {
+    var num = (CONFIG.whatsappNumber || "").replace(/\D/g, "");
+    if (!num) { $("waNote").textContent = T[lang].waSoon; return; }
+    window.location.href = "https://wa.me/" + num + "?text=" + encodeURIComponent(T[lang].waText);
+  });
+  $("chooseForm").addEventListener("click", function () {
+    showView("formView");
+    $("name").focus();
+  });
+  $("backBtn").addEventListener("click", function () { showView("chooseView"); });
 
   interest.addEventListener("change", function () {
     interest.classList.remove("placeholder");
@@ -645,7 +689,7 @@
   var saved = load();
   var start = saved || ((navigator.language || "").toLowerCase().indexOf("ar") === 0 ? "ar" : "en");
   applyLang(start === "ar" ? "ar" : "en");
-  showView("formView");
+  showView("chooseView");
 })();
 </script>
 </body>
